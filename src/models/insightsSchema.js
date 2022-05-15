@@ -10,6 +10,10 @@ const domainSchema = new mongoose.Schema({
     favorite:{
         type:Boolean,
         default:false
+    },
+    mediaLinks:{
+        type:Array,
+        
     }
 })
 

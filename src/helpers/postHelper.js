@@ -1,21 +1,25 @@
-const DomainCollection= require('../models/domainSchema')
+const ScapDataCollection= require('../models/insightsSchema')
 
 
 module.exports ={
+    //DATA FETCH HELPER
     postFetch:()=>{
         return new Promise((resolve,reject)=>{
-            DomainCollection.find({}).then((result)=>{
+            ScapDataCollection.find({}).then((result)=>{
                 resolve(result)
             }).catch(err=>{
                 reject(err)
             })
         })
     },
+
+    //DATA CREATE HELPER
     postCreate:(data)=>{
         return new Promise((resolve,reject)=>{
-            const newData = new DomainCollection({
+            const newData = new ScapDataCollection({
                 url:data.url,
-                wordCount: data.url.length,
+                wordCount: data.wordCount,
+                mediaLinks:data.mediaLinks
             })
 
             newData.save().then((result)=>{
@@ -25,11 +29,13 @@ module.exports ={
             })
         })
     },
+
+    //DATA UPDATE HELPER
     postFavorite:(id)=>{
         return new Promise(async(resolve,reject)=>{
-            const post = await DomainCollection.findOne({_id:id}) 
+            const post = await ScapDataCollection.findOne({_id:id}) 
             if(post){
-                DomainCollection.updateOne({_id:id},{favorite:!post.favorite}).then((result)=>{
+                ScapDataCollection.updateOne({_id:id},{favorite:!post.favorite}).then((result)=>{
                     resolve(true)
                 }).catch((err)=>{
                     reject(err)
@@ -39,10 +45,10 @@ module.exports ={
             }
         })
     },
-
+    //DATA DELETE HELPER
     postDelete:(id)=>{
         return new Promise((resolve,reject)=>{
-            DomainCollection.deleteOne({_id:id}).then(()=>{
+            ScapDataCollection.deleteOne({_id:id}).then(()=>{
                 resolve(true)
             }).catch(err=>{
                 reject(err)
