@@ -6,7 +6,9 @@ const insightsRouter= require("./src/router/insights")
 const db=require('./config/database')
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-app.use(cors())
+app.use(cors({
+    origin:['*','http://localhost:3000','https://web-scraper-client.vercel.app']
+}))
 db.dbConnect(process.env.MONGO_URL)
 
 //INSIGHTS ROUTER
