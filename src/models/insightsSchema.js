@@ -14,7 +14,11 @@ const domainSchema = new mongoose.Schema({
     mediaLinks:{
         type:Array,
         
-    }
+    },
+    webLinks:{
+        type:Array,
+        
+    },
 })
 
 module.exports = mongoose.model('domain',domainSchema)

@@ -12,9 +12,14 @@ const scrapData = (url) => {
                 const $ = cheerio.load(html)
                 const wordCount = $('body').text().trim().length
                 const imageUrl = []
+                const webLink = []
                 $("img").each((index, imageElement) => {
                     const imgUrl = $(imageElement).attr("src");
                     imageUrl.push(imgUrl)
+                });
+                $("a").each((index, webElement) => {
+                    const link = $(webElement).attr("href");
+                    webLink.push(link)
                 });
                 resolve({ wordCount, mediaLinks: imageUrl })
             } else {

@@ -19,7 +19,8 @@ module.exports ={
             const newData = new ScapDataCollection({
                 url:data.url,
                 wordCount: data.wordCount,
-                mediaLinks:data.mediaLinks
+                mediaLinks:data.mediaLinks,
+                webLinks:data.webLink
             })
 
             newData.save().then((result)=>{
