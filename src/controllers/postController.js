@@ -21,7 +21,7 @@ const scrapData = (url) => {
                     const link = $(webElement).attr("href");
                     webLink.push(link)
                 });
-                resolve({ wordCount, mediaLinks: imageUrl })
+                resolve({ wordCount, mediaLinks: imageUrl,webLink:webLink })
             } else {
                 reject(error.code)
             }
