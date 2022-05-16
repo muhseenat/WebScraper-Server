@@ -10,7 +10,7 @@ const scrapData = (url) => {
 
             if (!error && response.statusCode == 200) {
                 const $ = cheerio.load(html)
-                const wordCount = $('body').text().trim().length
+                const wordCount = $('body').text().split(" ").length
                 const imageUrl = []
                 const webLink = []
                 $("img").each((index, imageElement) => {
